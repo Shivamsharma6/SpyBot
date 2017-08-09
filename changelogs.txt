@@ -2,4 +2,5 @@
 Changes:
 Added functions
 Added Menu
+Added ShowProfile
 status and terminate options works rest are in development

@@ -39,10 +39,10 @@ if ((gender.upper()=='MALE') or (gender.upper()=='M')):
         salutation='Mr.'
         print salutation+name
     else:
+        marital = 'Not Married'
         salutation='Mr.'
-        martial='Not Married'
         print salutation+name
-    print 'Alright,I would like to know a little more about you...'
+    print '\n Alright,I would like to know a little more about you...'
     age=raw_input('Enter you age:')
 
     while(age.isalpha()):
@@ -53,6 +53,7 @@ if ((gender.upper()=='MALE') or (gender.upper()=='M')):
     print 'So lemme guess...'
     time.sleep(1)
     print 'You were born in:',year
+    age=int(age)
     if age<100:
         old=100+int(year)
         print 'You will be 100 years old in:',old
@@ -74,8 +75,9 @@ elif ((gender.upper()=='FEMALE') or (gender.upper()=='F')):
         print salutation+name
     else:
         salutation='Miss.'
+        marital='Not Married'
         print salutation + name
-    print 'Alright,I would like to know a little more about you...'
+    print '\n Alright,I would like to know a little more about you...'
     age = raw_input('Enter you age:')
 
     while (age.isalpha()):
@@ -86,6 +88,7 @@ elif ((gender.upper()=='FEMALE') or (gender.upper()=='F')):
     print 'So lemme guess...'
     time.sleep(1)
     print 'You were born in:', year
+    age=int(age)
     if age < 100:
         old = 100 + int(year)
         print 'You will be 100 years old in:', old
@@ -97,12 +100,14 @@ else:
     print 'Sorry! I can\'t help you out...'
 
 time.sleep(1)
+status='Not updated yet!'
 def start_chat(spy_name,spy_age,spy_rating):
+    global status
     show_menu=True
     while show_menu:
         print '\n'
         print 'Select any of the following:'
-        choices='1.Add a status update \n2.Add a friend \n3.Send a secret message \n4.Read a secret message \n5.Read Chats from user \n6.Show your profile \n7.Terminate \n'
+        choices='1.Add a status update \n2.Add a friend \n3.Send a secret message \n4.Read a secret message \n5.Read Chats from user \n6.Show your profile \n7.Terminate \n\n'
         ch=int(raw_input(choices))
         if ch==1:
             print 'Time to update the status!'
@@ -117,10 +122,12 @@ def start_chat(spy_name,spy_age,spy_rating):
         elif ch==5:
             print 'Under Development'
         elif ch==6:
+            print ''
             print 'Your Profile:'
             print 'Name:',salutation+name
             print 'Age:',age
-            print 'Martial Status:',marital
+            print 'Marital Status:',marital
+            print 'Status: \n',status
         elif ch==7:
             show_menu =False
             print 'Terminating...'
