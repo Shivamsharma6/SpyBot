@@ -1,3 +1,4 @@
+from Spy_Alpha import spy_name,spy_age,spy_rating
 import time;
 import datetime;
 print ''
@@ -34,21 +35,21 @@ if ((gender.upper()=='MALE') or (gender.upper()=='M')):
     print ''
     print 'Welcome'
     marital=raw_input('Married or not? \n')
-    if marital=='Yes':
+    if marital=='Married':
         salutation='Mr.'
         print salutation+name
     else:
         salutation='Mr.'
+        martial='Not Married'
         print salutation+name
-    print 'Alright,I would liketo know a little more about you...'
+    print 'Alright,I would like to know a little more about you...'
     age=raw_input('Enter you age:')
 
     while(age.isalpha()):
         print 'Enter a numeric value'
-        age=int(raw_input('Enter your age:'))
+        age=(raw_input('Enter your age:'))
 
-
-    year = str(datetime.date.today().year-age)
+    year = datetime.date.today().year-int(age)
     print 'So lemme guess...'
     time.sleep(1)
     print 'You were born in:',year
@@ -68,21 +69,62 @@ elif ((gender.upper()=='FEMALE') or (gender.upper()=='F')):
     print ''
     print 'Welcome'
     marital=raw_input('Married or not ? \n')
-    if ((marital.upper()=='YES') or (marital.upper()=='MARRIED')or(marital.upper()=='NOT')):
+    if ((marital.upper()=='YES') or (marital.upper()=='MARRIED')):
         salutation='Mrs.'
         print salutation+name
     else:
-        salutation='Ms.'
+        salutation='Miss.'
         print salutation + name
-    age=int(raw_input('Enter you age:'))
-    year = str(datetime.date.today().year-age)
+    print 'Alright,I would like to know a little more about you...'
+    age = raw_input('Enter you age:')
+
+    while (age.isalpha()):
+        print 'Enter a numeric value'
+        age = (raw_input('Enter your age:'))
+
+    year = datetime.date.today().year - int(age)
     print 'So lemme guess...'
     time.sleep(1)
-    if age<100:
-        old=100+int(year)
-        print 'You will be 100 years old in:',old
+    print 'You were born in:', year
+    if age < 100:
+        old = 100 + int(year)
+        print 'You will be 100 years old in:', old
     else:
-        old=100+int(year)
-        print 'You were 100 years older in:',old
+        old = 100 + int(year)
+        print 'You were 100 years older in:', old
+
 else:
-    print 'I do not think you have gender.'
+    print 'Sorry! I can\'t help you out...'
+
+time.sleep(1)
+def start_chat(spy_name,spy_age,spy_rating):
+    show_menu=True
+    while show_menu:
+        print '\n'
+        print 'Select any of the following:'
+        choices='1.Add a status update \n2.Add a friend \n3.Send a secret message \n4.Read a secret message \n5.Read Chats from user \n6.Show your profile \n7.Terminate \n'
+        ch=int(raw_input(choices))
+        if ch==1:
+            print 'Time to update the status!'
+            status=raw_input('Enter your status:')
+            print 'Updated Status:',status
+        elif ch==2:
+            print 'Under Development'
+        elif ch==3:
+            print 'Under Development'
+        elif ch==4:
+            print 'Under Development'
+        elif ch==5:
+            print 'Under Development'
+        elif ch==6:
+            print 'Your Profile:'
+            print 'Name:',salutation+name
+            print 'Age:',age
+            print 'Martial Status:',marital
+        elif ch==7:
+            show_menu =False
+            print 'Terminating...'
+            time.sleep(0.7)
+            print 'Eventually Terminated'
+
+start_chat(spy_name,spy_age,spy_rating)
