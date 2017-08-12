@@ -4,3 +4,12 @@ Added functions
 Added Menu
 Added ShowProfile
 status and terminate options works rest are in development
+
+12-08-17
+Changes:
+code has been refactored
+much more efficient than the previous build
+used dictionary instead of multiple lists
+all funcs are running except reading secret msgs and chat 
+
+

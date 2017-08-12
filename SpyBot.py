@@ -1,6 +1,6 @@
-from Spy_Alpha import spy_name,spy_age,spy_rating
-import time;
-import datetime;
+from Spy_Alpha import spy
+import time ;
+import datetime ;
 print ''
 print ''
 print ''
@@ -25,6 +25,8 @@ print ''
 print ''
 print 'Featuring the most advanced A.I spy of our time!'
 print 'Heyy'
+global friends
+friends=[]
 gender=raw_input('Male or Female:')
 if ((gender.upper()=='MALE') or (gender.upper()=='M')):
     name=raw_input("Enter your name:")
@@ -101,7 +103,7 @@ else:
 
 time.sleep(1)
 status='Not updated yet!'
-def start_chat(spy_name,spy_age,spy_rating):
+def start_chat():
     global status
     show_menu=True
     while show_menu:
@@ -111,12 +113,58 @@ def start_chat(spy_name,spy_age,spy_rating):
         ch=int(raw_input(choices))
         if ch==1:
             print 'Time to update the status!'
+            pos=1
             status=raw_input('Enter your status:')
+            pos+=pos
+            list=[]
+            for i in list:
+                list.append(status)
             print 'Updated Status:',status
+            print 'Showing previous status updates'
+            for j in range(len(list)):
+                print list[j]
         elif ch==2:
-            print 'Under Development'
+            def add_frnd():
+                new_friend={
+                    'name':'',
+                    'salutation':'',
+                    'age':0,
+                    'rating':0.0
+                }
+                new_friend['name'] = raw_input("Please add your friend's name: ")
+                new_friend['salutation'] = raw_input("Mr. or Ms.?: ").capitalize()
+                new_friend['name'] = new_friend['salutation']  + new_friend['name']
+                new_friend['age'] = int(raw_input("Age:"))
+                new_friend['rating'] = float(raw_input("Spy rating:"))
+                print 'Adding Friend...'
+                time.sleep(1)
+                print 'Name:',new_friend['name']
+                print 'Age:', new_friend['age']
+                print 'Rating:',new_friend['rating']
+                if len(new_friend['name']) > 0 and new_friend['age'] > 12 and new_friend['rating'] >= spy['spy_rating']:
+                    friends.append(new_friend)
+                    print friends
+                else:
+                    print 'Sorry! We can\'t add you because you are not eligible.'
+                return len(friends)
+            add_frnd()
+
         elif ch==3:
-            print 'Under Development'
+            print 'Wanna send some secret messages...!'
+            time.sleep(0.8)
+
+            def select_friend():
+                global item_number
+                item_number=0
+                for friend in friends:
+                    print '%s aged %d with rating %.2f is online' % (friend['name'], friend['age'], friend['rating'])
+                    print '%d.%s' % ((item_number + 1), friend['name'])
+                    item_number = item_number + 1
+                friend_choice = raw_input("Choose from your friends")
+                friend_choice_position = int(friend_choice) - 1
+                return friend_choice_position
+            select_friend()
+
         elif ch==4:
             print 'Under Development'
         elif ch==5:
@@ -134,4 +182,4 @@ def start_chat(spy_name,spy_age,spy_rating):
             time.sleep(0.7)
             print 'Eventually Terminated'
 
-start_chat(spy_name,spy_age,spy_rating)
+start_chat()
