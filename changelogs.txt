@@ -12,4 +12,12 @@ much more efficient than the previous build
 used dictionary instead of multiple lists
 all funcs are running except reading secret msgs and chat 
 
+14-08-17
+Changes:
+Final build
+code has been refactored again
+All modules are working properly
+lots of improvisation and optimization 
+Inituitive interface 
+
 
