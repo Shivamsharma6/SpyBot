@@ -20,4 +20,9 @@ All modules are working properly
 lots of improvisation and optimization 
 Inituitive interface 
 
+15-08-17
+Changes:
+Used exception handling
+code is optimized for different kind of inputs from user
+lots of bugs fixed.
 
