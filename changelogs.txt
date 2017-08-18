@@ -26,3 +26,12 @@ Used exception handling
 code is optimized for different kind of inputs from user
 lots of bugs fixed.
 
+19-08-17
+Changes: 
+Proper commentation of codes.
+Code Refactored.
+Program has been changed somewhere according to project.
+Classes has been used.
+
+
+
