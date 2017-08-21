@@ -311,8 +311,8 @@ def add_frnd():
     new_friend.name = raw_input("Please add your friend's name: ")
     new_friend.salutation = raw_input("Are they Mr. or Ms.?: ")
     new_friend.name = new_friend.salutation + " " + new_friend.name
-    new_friend.age = int(raw_input("Age?"))
-    new_friend.rating = float(raw_input("Spy rating?"))
+    new_friend.age = int(raw_input("Age?:"))
+    new_friend.rating = float(raw_input("Spy rating?:"))
     print 'Adding Friend...'
     time.sleep(1)
     print 'Name:', new_friend.name
@@ -323,6 +323,7 @@ def add_frnd():
         print 'Friend Added!'
     else:
         print 'Sorry! We can\'t add you because you are not eligible.'
+        print 'Be logical while entering age and rating'
     return len(friends)
 
 
@@ -382,10 +383,10 @@ def read_chat():
 
 # Function to start Menu which will call other functions required to perform their respective tasks.
 def start_chat():
-    spy.name = spy.salutation + " " + spy.name
+
     if spy.age > 12 and spy.age < 50:
-        print "Authentication complete. Welcome " + spy.name + " age: " \
-              + str(spy.age) + " and rating of: " + str(spy.rating) + 'It is good to see you.'
+        print 'Authentication complete!'
+        print salutation+name + ' It is good to see you.'
     try:
         show_menu = True
         while show_menu:
@@ -393,13 +394,14 @@ def start_chat():
             print 'Select any of the following:'
             choices = '1.Add a status update \n2.Add a friend \n3.Send a secret message \n4.Read a secret message \n5.Read Chats from user \n6.Show your profile \n7.Terminate \n\n'
             ch = int(raw_input(choices))
+            dic = dict()
+            dic.update({'Status': '', 'Time': ''})
+            t = 0
             if ch == 1:
                 print 'Time to update the status!'
                 print 'Wanna update from your previous updates'
                 u = raw_input('Yes or No:')
                 if u.upper() == 'NO':
-                    dic = dict()
-                    dic.update({'Status': '', 'Time': ''})
                     dic['Status'] = raw_input('Enter your status:')
                     dic['Time'] = time.strftime("%H:%M:%S")
                     if len(dic['Status']) > 0:
@@ -410,14 +412,27 @@ def start_chat():
                     else:
                         print 'You haven\'t entered anything.'
                 elif u.upper() == 'YES':
-                    if len(dili) < 0:
+                    if len(dili) == 0:
                         print 'No previous updates found'
                     else:
-                        print dili
-                        t = int(raw_input('Enter its position'))
-                        t += 1
-                print 'Showing status updates:'
-                print dili
+                        print 'Showing status updates:'
+                        for zx in range(len(dili)):
+                            print dili[zx]
+                        try:
+                            t = int(raw_input('Enter its position:'))
+                        except ValueError:
+                            print 'Enter the respective position'
+                            print 'like 1, 2,3 etc...'
+                            t = int(raw_input('Enter its position:'))
+                        for sh in range(t):
+                            print dili[sh]['Status']
+                            dic['Status'] = dili[sh]['Status']
+                            dic['Time'] = time.strftime('%H:%M:%S')
+                            print 'Updating...'
+                            time.sleep(0.8)
+                            print 'Status updated!'
+                            print dic
+
 
             elif ch == 2:
                 frnd_num = add_frnd()
