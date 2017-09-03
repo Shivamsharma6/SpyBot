@@ -18,7 +18,7 @@ Final build
 code has been refactored again
 All modules are working properly
 lots of improvisation and optimization 
-Inituitive interface 
+Intuitive interface
 
 15-08-17
 Changes:
@@ -36,6 +36,16 @@ Classes has been used.
 21-08-17
 Changes:
 Bugs fixed.
+
+1-09-17
+Changes:
+Used regular expressions for better validation.
+Code refactored again.
+Program optimized at its best.
+New features added.
+Project ready.
+Chats are printed in colors.'bit fancy! ;)'
+Final release!!!
 
 
 
