@@ -367,6 +367,7 @@ def select_friend():
 # Function to encrypt message inside an image file.
 def send_message():
     frnd = select_friend()
+    avg = 0
     pattern = '^[a-zA-Z0-9\s]+\.jpg$'
     while True:
         original_image = raw_input('Name of image:')
@@ -400,7 +401,8 @@ def send_message():
         # Encryption of image:
         try:
             Steganography.encode(original_image, output_image, text)
-            new_chat = ChatMessage(text, True)
+            avg = len(text)
+            new_chat = ChatMessage(text, True, avg, frnd)
             friends[frnd].chats.append(new_chat)
             print '\nIt seems you are in danger.'
             print 'Don\'t you worry my friend.'
@@ -414,7 +416,7 @@ def send_message():
         # Encryption of image:
         try:
             Steganography.encode(original_image, output_image, text)
-            new_chat = ChatMessage(text, True)
+            new_chat = ChatMessage(text, True, avg, frnd)
             friends[frnd].chats.append(new_chat)
             print "Your emergency secret message image is ready!"
         except IOError:
@@ -426,6 +428,9 @@ def send_message():
 # Function to read encrypted message encoded inside an image file.
 def read_message():
     frnd = select_friend()
+    sender = frnd
+    avgg = 0
+    flag = 0
     while True:
         output_path = raw_input('Name of image which contains secret message:')
         pattern = '^[a-zA-Z0-9\s]+\.jpg$'
@@ -439,7 +444,8 @@ def read_message():
                 if re.match(pattern, secret_text)!= None:
                     print 'This is your message:'
                     print secret_text
-                    new_chat = ChatMessage(secret_text, False)
+                    avg = len(secret_text)
+                    new_chat = ChatMessage(secret_text, False, avg, sender)
                     friends[frnd].chats.append(new_chat)
                     print "Your secret message has been saved!"
                     break
@@ -453,6 +459,17 @@ def read_message():
             print 'It must end with .jpg association.'
             print 'Try Again!'
             sleep(0.8)
+        if new_chat.sender == 1:
+            flag += 1
+            av = len(new_chat.message) / flag
+            avgg = avgg + av
+            if avgg > 100:
+                friends.pop(new_chat.sender)
+                print 'He has been removed.'
+                print 'He has been speaking too much.'
+
+
+
 
 
 # Function to read chat messages from the users.

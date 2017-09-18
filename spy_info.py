@@ -19,10 +19,12 @@ class Spy:
 # ChatMessage class contains all chat related info.
 class ChatMessage:
 
-    def __init__(self, message, sent_by_me):
+    def __init__(self, message, sent_by_me, avg, sender):
         self.message = message
         self.time = datetime.now()
         self.sent_by_me = sent_by_me
+        self.avg = avg
+        self.sender = sender
 
 # Spy class has been initialized with some values.
 spy = Spy('Alpha', 'Mr.', 24, 3.4, 'Not Married')
